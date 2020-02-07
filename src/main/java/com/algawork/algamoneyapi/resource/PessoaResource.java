@@ -29,12 +29,14 @@ public class PessoaResource {
     @Autowired
     private PessoaRepository pessoaRepository;
 
+    //lista todas as pessoas
     @GetMapping
     public ResponseEntity<?> listarPessoa() {
         List<Pessoa> pessoas = pessoaRepository.findAll();
         return !pessoas.isEmpty() ? ResponseEntity.ok(pessoas) : ResponseEntity.noContent().build();
     }
 
+    //criar uma pessoa nova e retorna 201 created
     @PostMapping
     public ResponseEntity<Pessoa> criarPessoa(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
         Pessoa pessoaSalva = pessoaRepository.save(pessoa);

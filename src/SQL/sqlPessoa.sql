@@ -12,9 +12,9 @@ CREATE TABLE pessoa(
 );
 
 
-INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Moises Martins', 'Travessa dos Macuxis', 2139,'Alvorada', 69317296, 'Boa Vista', 'RR',true);
-INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Ivoneide Martins', 'Avenida Ataide Teive', 1330,'Liberdade', 69256958, 'Boa Vista', 'RR',true);
-INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Robson Landrin','Avenida Mario Homem de Melo', 5669,'Silvio Leite', 69952752, 'Boa Vista', 'RR',true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Moises Martins', 'Travessa dos Macuxis', '2139',null,'Alvorada', '69.317-296', 'Boa Vista', 'RR',true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Ivoneide Martins', 'Avenida Ataide Teive', '1330',null,'Liberdade', '69.256-958', 'Boa Vista', 'RR',true);
+INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values('Robson Landrin','Avenida Mario Homem de Melo', '5669', null,'Silvio Leite', '69.952-752', 'Boa Vista', 'RR',true);
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('João Silva', 'Rua do Abacaxi', '10', null, 'Brasil', '38.400-12', 'Uberlândia', 'MG', true);
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Maria Rita', 'Rua do Sabiá', '110', 'Apto 101', 'Colina', '11.400-12', 'Ribeirão Preto', 'SP', true);
 INSERT INTO pessoa (nome, logradouro, numero, complemento, bairro, cep, cidade, estado, ativo) values ('Pedro Santos', 'Rua da Bateria', '23', null, 'Morumbi', '54.212-12', 'Goiânia', 'GO', true);
