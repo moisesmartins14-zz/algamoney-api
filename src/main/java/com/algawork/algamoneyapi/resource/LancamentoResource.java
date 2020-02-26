@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,11 +39,10 @@ public class LancamentoResource {
     private LancamentoRepository lancamentoRepository;
 
     @GetMapping
-    public ResponseEntity<?> pesquisar(LancamentoFilter lancamentoFilter){
-        List<Lancamento> lancamentos = lancamentoRepository.filtrar(lancamentoFilter);
-        return  !lancamentos.isEmpty() ? ResponseEntity.ok(lancamentos) : ResponseEntity.noContent().build();
+    public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
+        return lancamentoRepository.filtrar(lancamentoFilter, pageable);
+//        return  !lancamentos.isEmpty() ? ResponseEntity.ok(lancamentos) : ResponseEntity.noContent().build();
     }
-
     @PostMapping
     public ResponseEntity<Lancamento> criarLancamento(@Valid @RequestBody Lancamento lancamento,  HttpServletResponse response){
         Lancamento lancamentoSalva = lancamentoService.salvar(lancamento);
@@ -50,7 +51,7 @@ public class LancamentoResource {
     }
 
     @GetMapping("/{codigo}")
-    public ResponseEntity<Lancamento> buscarPeloCodigoLancamento(@PathVariable Long codigo){
+    public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo){
         Lancamento lancamento = this.lancamentoRepository.findById(codigo).orElse(null);
 
         return lancamento !=null ? ResponseEntity.ok(lancamento) : ResponseEntity.notFound().build();
