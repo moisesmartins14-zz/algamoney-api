@@ -38,10 +38,7 @@ public class LancamentoResource {
 
     @GetMapping
     public ResponseEntity<?> pesquisar(LancamentoFilter lancamentoFilter){
-
-        List<Lancamento> lancamentos = lancamentoRepository.findAll();
-
-
+        List<Lancamento> lancamentos = lancamentoRepository.filtrar(lancamentoFilter);
         return  !lancamentos.isEmpty() ? ResponseEntity.ok(lancamentos) : ResponseEntity.noContent().build();
     }
 
@@ -66,4 +63,11 @@ public class LancamentoResource {
         List<AlgamoneyExceptionHandler.Erro> erros = Arrays.asList(new AlgamoneyExceptionHandler.Erro(mensagemUsuario, mensagemDesenvolverdor));
         return ResponseEntity.badRequest().body(erros);
     }
+
+    @DeleteMapping("/{codigo}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteLancamento(@PathVariable Long codigo){
+        lancamentoRepository.deleteById(codigo);
+    }
+
 }

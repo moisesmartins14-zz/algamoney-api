@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface LancamentoRepositoryQuery {
 
-    public List<Lancamento> filtrar(LancamentoFilter lancamentoFilter);
+    List<Lancamento> filtrar(LancamentoFilter lancamentoFilter);
 
 }
